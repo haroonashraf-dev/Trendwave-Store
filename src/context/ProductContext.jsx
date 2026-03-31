@@ -1,22 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '../types';
 
-interface ProductContextType {
-  products: Product[];
-  loading: boolean;
-  error: string | null;
-  fetchProducts: () => Promise<void>;
-  addProduct: (product: Omit<Product, 'id' | 'reviews'>) => Promise<void>;
-  updateProduct: (id: string, product: Partial<Product>) => Promise<void>;
-  deleteProduct: (id: string) => Promise<void>;
-}
+const ProductContext = createContext(undefined);
 
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
-
-export function ProductProvider({ children }: { children: React.ReactNode }) {
-  const [products, setProducts] = useState<Product[]>([]);
+export function ProductProvider({ children }) {
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -26,7 +15,7 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
       const data = await res.json();
       setProducts(data);
       setError(null);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -37,7 +26,7 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
     fetchProducts();
   }, []);
 
-  const addProduct = async (product: Omit<Product, 'id' | 'reviews'>) => {
+  const addProduct = async (product) => {
     try {
       const res = await fetch('/api/products', {
         method: 'POST',
@@ -47,13 +36,13 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
       if (!res.ok) throw new Error('Failed to add product');
       const newProduct = await res.json();
       setProducts(prev => [...prev, newProduct]);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
       throw err;
     }
   };
 
-  const updateProduct = async (id: string, product: Partial<Product>) => {
+  const updateProduct = async (id, product) => {
     try {
       const res = await fetch(`/api/products/${id}`, {
         method: 'PUT',
@@ -63,18 +52,18 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
       if (!res.ok) throw new Error('Failed to update product');
       const updatedProduct = await res.json();
       setProducts(prev => prev.map(p => p.id === id ? updatedProduct : p));
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
       throw err;
     }
   };
 
-  const deleteProduct = async (id: string) => {
+  const deleteProduct = async (id) => {
     try {
       const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete product');
       setProducts(prev => prev.filter(p => p.id !== id));
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
       throw err;
     }

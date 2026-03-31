@@ -1,22 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { CartItem, Product } from '../types';
 
-interface CartContextType {
-  items: CartItem[];
-  addToCart: (product: Product, size: string, quantity?: number) => void;
-  removeFromCart: (cartItemId: string) => void;
-  updateQuantity: (cartItemId: string, quantity: number) => void;
-  clearCart: () => void;
-  isCartOpen: boolean;
-  setIsCartOpen: (isOpen: boolean) => void;
-  total: number;
-  itemCount: number;
-}
+const CartContext = createContext(undefined);
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
-
-export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+export function CartProvider({ children }) {
+  const [items, setItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Load from local storage on mount
@@ -36,7 +23,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('trendwave_cart', JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (product: Product, size: string, quantity = 1) => {
+  const addToCart = (product, size, quantity = 1) => {
     setItems(prev => {
       const existingItemIndex = prev.findIndex(
         item => item.id === product.id && item.selectedSize === size
@@ -53,11 +40,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setIsCartOpen(true);
   };
 
-  const removeFromCart = (cartItemId: string) => {
+  const removeFromCart = (cartItemId) => {
     setItems(prev => prev.filter(item => item.cartItemId !== cartItemId));
   };
 
-  const updateQuantity = (cartItemId: string, quantity: number) => {
+  const updateQuantity = (cartItemId, quantity) => {
     if (quantity <= 0) {
       removeFromCart(cartItemId);
       return;

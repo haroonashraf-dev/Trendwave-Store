@@ -1,56 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
-import { ArrowRight, Star, Truck, ShieldCheck, RefreshCcw } from 'lucide-react';
-import { useProducts } from '../context/ProductContext';
-import { useCart } from '../context/CartContext';
-
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { ArrowRight, Star, Truck, ShieldCheck, RefreshCcw } from "lucide-react";
+import { useProducts } from "../context/ProductContext";
+import { useCart } from "../context/CartContext";
 export function Home() {
   const { products, loading } = useProducts();
   const { addToCart } = useCart();
-
   const featuredProducts = products.slice(0, 4);
-  const summerProducts = products.filter(p => p.category === 'Summer Collection').slice(0, 4);
-
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
+  const summerProducts = products.filter((p) => p.category === "Summer Collection").slice(0, 4);
+  return <div className="flex flex-col min-h-screen">
+      {
+    /* Hero Section */
+  }
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=2000"
-            alt="Fashion Hero"
-            className="w-full h-full object-cover object-center"
-          />
+    src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=2000"
+    alt="Fashion Hero"
+    className="w-full h-full object-cover object-center"
+  />
           <div className="absolute inset-0 bg-black/30" />
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 tracking-tight"
-          >
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 tracking-tight"
+  >
             Elevate Your Everyday Style
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light"
-          >
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+    className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light"
+  >
             Discover our curated collection of premium essentials designed for the modern minimalist. Quality that speaks for itself.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          >
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+  >
             <Link
-              to="/shop"
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-black bg-white hover:bg-gray-100 transition-colors rounded-full"
-            >
+    to="/shop"
+    className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-black bg-white hover:bg-gray-100 transition-colors rounded-full"
+  >
               Shop the Collection
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
@@ -58,7 +55,9 @@ export function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {
+    /* Features Section */
+  }
       <section className="py-16 bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -87,7 +86,9 @@ export function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
+      {
+    /* Featured Products */
+  }
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
@@ -100,48 +101,42 @@ export function Home() {
             </Link>
           </div>
 
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="bg-gray-200 aspect-[3/4] rounded-xl mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featuredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative flex flex-col"
-                >
+          {loading ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[1, 2, 3, 4].map((i) => <div key={i} className="animate-pulse">
+                  <div className="bg-gray-200 aspect-[3/4] rounded-xl mb-4" />
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+                  <div className="h-4 bg-gray-200 rounded w-1/4" />
+                </div>)}
+            </div> : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {featuredProducts.map((product, index) => <motion.div
+    key={product.id}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    className="group relative flex flex-col"
+  >
                   <Link to={`/product/${product.id}`} className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 mb-4">
                     <img
-                      src={product.image}
-                      alt={product.name}
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    {product.stock < 5 && product.stock > 0 && (
-                      <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+    src={product.image}
+    alt={product.name}
+    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+    loading="lazy"
+  />
+                    {product.stock < 5 && product.stock > 0 && <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                         Only {product.stock} left
-                      </div>
-                    )}
-                    {/* Quick Add Overlay */}
+                      </div>}
+                    {
+    /* Quick Add Overlay */
+  }
                     <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                       <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          addToCart(product, product.sizes[0]);
-                        }}
-                        className="w-full bg-white/90 backdrop-blur-sm text-black font-medium py-3 rounded-lg hover:bg-black hover:text-white transition-colors shadow-lg"
-                      >
+    onClick={(e) => {
+      e.preventDefault();
+      addToCart(product, product.sizes[0]);
+    }}
+    className="w-full bg-white/90 backdrop-blur-sm text-black font-medium py-3 rounded-lg hover:bg-black hover:text-white transition-colors shadow-lg"
+  >
                         Quick Add
                       </button>
                     </div>
@@ -157,10 +152,8 @@ export function Home() {
                     </div>
                     <p className="text-sm font-semibold text-gray-900">${product.price.toFixed(2)}</p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                </motion.div>)}
+            </div>}
           <div className="mt-8 sm:hidden text-center">
             <Link to="/shop" className="inline-flex items-center text-sm font-medium text-black hover:underline underline-offset-4">
               View All Products <ArrowRight className="ml-1 w-4 h-4" />
@@ -169,7 +162,9 @@ export function Home() {
         </div>
       </section>
 
-      {/* Summer Collection */}
+      {
+    /* Summer Collection */
+  }
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
@@ -182,48 +177,42 @@ export function Home() {
             </Link>
           </div>
 
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="bg-gray-200 aspect-[3/4] rounded-xl mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {summerProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative flex flex-col"
-                >
+          {loading ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[1, 2, 3, 4].map((i) => <div key={i} className="animate-pulse">
+                  <div className="bg-gray-200 aspect-[3/4] rounded-xl mb-4" />
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+                  <div className="h-4 bg-gray-200 rounded w-1/4" />
+                </div>)}
+            </div> : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {summerProducts.map((product, index) => <motion.div
+    key={product.id}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    className="group relative flex flex-col"
+  >
                   <Link to={`/product/${product.id}`} className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 mb-4">
                     <img
-                      src={product.image}
-                      alt={product.name}
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    {product.stock < 5 && product.stock > 0 && (
-                      <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+    src={product.image}
+    alt={product.name}
+    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+    loading="lazy"
+  />
+                    {product.stock < 5 && product.stock > 0 && <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                         Only {product.stock} left
-                      </div>
-                    )}
-                    {/* Quick Add Overlay */}
+                      </div>}
+                    {
+    /* Quick Add Overlay */
+  }
                     <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                       <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          addToCart(product, product.sizes[0]);
-                        }}
-                        className="w-full bg-white/90 backdrop-blur-sm text-black font-medium py-3 rounded-lg hover:bg-black hover:text-white transition-colors shadow-lg"
-                      >
+    onClick={(e) => {
+      e.preventDefault();
+      addToCart(product, product.sizes[0]);
+    }}
+    className="w-full bg-white/90 backdrop-blur-sm text-black font-medium py-3 rounded-lg hover:bg-black hover:text-white transition-colors shadow-lg"
+  >
                         Quick Add
                       </button>
                     </div>
@@ -239,10 +228,8 @@ export function Home() {
                     </div>
                     <p className="text-sm font-semibold text-gray-900">${product.price.toFixed(2)}</p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                </motion.div>)}
+            </div>}
           <div className="mt-8 sm:hidden text-center">
             <Link to="/shop?category=Summer%20Collection" className="inline-flex items-center text-sm font-medium text-black hover:underline underline-offset-4">
               Shop Summer <ArrowRight className="ml-1 w-4 h-4" />
@@ -251,13 +238,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {
+    /* Testimonial Section */
+  }
       <section className="py-24 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="w-6 h-6 text-yellow-400 fill-current" />
-            ))}
+            {[1, 2, 3, 4, 5].map((star) => <Star key={star} className="w-6 h-6 text-yellow-400 fill-current" />)}
           </div>
           <blockquote className="text-2xl md:text-4xl font-serif font-medium leading-tight mb-8">
             "The quality of the materials and the attention to detail is unmatched. TrendWave has completely transformed my wardrobe."
@@ -267,6 +254,5 @@ export function Home() {
           </cite>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 }

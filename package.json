@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
-    "build": "vite build && tsc && tsx build-server.ts",
+    "dev": "tsx server.js",
+    "build": "vite build && tsx build-server.js",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "echo 'No linting for JS'"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
