@@ -32,7 +32,7 @@ export function Checkout() {
       message += `- ${item.quantity}x ${item.name} (Size: ${item.selectedSize}) - $${(item.price * item.quantity).toFixed(2)}%0A`;
     });
     message += `%0A*Total: $${total.toFixed(2)}*`;
-    const businessPhone = "1234567890";
+    const businessPhone = "+923137386619";
     const whatsappUrl = `https://wa.me/${businessPhone}?text=${message}`;
     window.open(whatsappUrl, "_blank");
     clearCart();
