@@ -1,13 +1,14 @@
 {
-  "name": "react-example",
+  "name": "trendwave-store",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon server.js",
     "build": "vite build",
-    "start": "node server.js",
-    "preview": "vite preview"
+    "start": "NODE_ENV=production node server.js",
+    "preview": "vite preview",
+    "clean": "rmdir /s /q dist"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
@@ -22,11 +23,12 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
     "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.27.4",
+    "nodemon": "^3.1.14",
     "tailwindcss": "^4.1.14",
     "vite": "^6.2.0"
   }
-}
+} 
