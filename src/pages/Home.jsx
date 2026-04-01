@@ -65,22 +65,22 @@ export function Home() {
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                 <Truck className="w-6 h-6 text-black" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Free Global Shipping</h3>
-              <p className="text-gray-500 text-sm">On all orders over $150. Fast and reliable delivery worldwide.</p>
+              <h3 className="text-lg font-semibold mb-2">Fast Delivery</h3>
+              <p className="text-gray-500 text-sm">Nationwide delivery across Pakistan within 3–5 days.</p>
             </div>
             <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                 <RefreshCcw className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Easy Returns</h3>
-              <p className="text-gray-500 text-sm">30-day hassle-free return policy. We want you to love your purchase.</p>
+              <p className="text-gray-500 text-sm">7-day easy return & exchange policy for your peace of mind.</p>
             </div>
             <div className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                 <ShieldCheck className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Secure Checkout</h3>
-              <p className="text-gray-500 text-sm">Your payment information is processed securely with end-to-end encryption.</p>
+              <p className="text-gray-500 text-sm">Cash on Delivery & Secure Payment.</p>
             </div>
           </div>
         </div>
@@ -241,7 +241,7 @@ export function Home() {
       {
     /* Testimonial Section */
   }
-      <section className="py-24 bg-black text-white">
+      <section className="py-14 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             {[1, 2, 3, 4, 5].map((star) => <Star key={star} className="w-6 h-6 text-yellow-400 fill-current" />)}
@@ -250,7 +250,7 @@ export function Home() {
             "The quality of the materials and the attention to detail is unmatched. TrendWave has completely transformed my wardrobe."
           </blockquote>
           <cite className="text-sm uppercase tracking-widest text-gray-400 not-italic">
-            — Michael T., Verified Buyer
+            — Verified Customer, TrendWave Store
           </cite>
         </div>
       </section>

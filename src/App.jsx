@@ -10,6 +10,7 @@ import { Checkout } from "./pages/Checkout";
 import { AdminDashboard } from "./pages/AdminDashboard";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";
+import { HireMe } from "./pages/HireMe";
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -32,9 +33,11 @@ export default function App() {
                 <Route path="/product/:id" element={<ProductDetails />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/admin" element={<AdminDashboard />} />
-                {
-    /* Fallback routes */
-  }
+
+                <Route path="/hire-me" element={<HireMe />} />
+
+            /* Fallback routes */
+  
                 <Route path="/collections" element={<Shop />} />
                 <Route path="/about" element={<div className="pt-32 pb-24 text-center min-h-screen"><h1 className="text-4xl font-serif">About Us</h1><p className="mt-4 text-gray-500">Coming soon.</p></div>} />
                 <Route path="*" element={<div className="pt-32 pb-24 text-center min-h-screen"><h1 className="text-4xl font-serif">404 - Page Not Found</h1><p className="mt-4 text-gray-500">The page you are looking for does not exist.</p></div>} />

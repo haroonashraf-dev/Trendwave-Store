@@ -23,7 +23,7 @@ export function Navbar() {
     { name: "Home", path: "/" },
     { name: "Shop", path: "/shop" },
     { name: "Collections", path: "/collections" },
-    { name: "About", path: "/about" }
+    { name: "Hire Me", path: "/hire-me" }
   ];
   return <header
     className={cn(
